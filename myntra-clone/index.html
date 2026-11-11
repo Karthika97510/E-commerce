@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>MYNTRA - Online Shopping for Women, Men, Kids Fashion & Lifestyle</title>
+  <!-- Fonts & Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Theme Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#ff3f6c",
+            "primary-dark": "#e0325d",
+            "primary-container": "#fff0f3",
+            "secondary": "#865300",
+            "secondary-container": "#feb14f",
+            "surface-dim": "#f5f5f6",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f5f5f6",
+            "surface-container": "#f0f0f2",
+            "surface-container-high": "#eaeaec",
+            "on-surface": "#282c3f",
+            "on-surface-variant": "#535766",
+            "outline": "#94969f",
+            "error": "#d32f2f",
+            "success": "#03a685"
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      width: 1em;
+      height: 1em;
+      overflow: hidden;
+      flex-shrink: 0;
+      display: inline-block;
+      vertical-align: middle;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* Mega Menu Transitions */
+    .nav-item:hover .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .mega-menu {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(6px);
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes heartPop {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.35); }
+      100% { transform: scale(1); }
+    }
+    .heart-pop {
+      animation: heartPop 0.28s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+  </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface font-sans antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#282c3f] text-white px-4 py-2 text-center text-[11px] sm:text-xs font-semibold flex flex-wrap items-center justify-center gap-2 sm:gap-3 shadow-inner">
+    <span class="bg-[#ff3f6c] text-white px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Special Offer</span>
+    <span>FLAT ₹500 OFF On Your 1st Purchase Via App | Code: <strong class="text-amber-300">MYNTRA500</strong></span>
+    <button type="button" class="underline hover:text-amber-200 transition-colors text-xs font-medium ml-1" onclick="openInfoModal('app')">Download App</button>
+  </div>
+
+  <!-- Header Sticky Navigation -->
+  <header class="bg-white border-b border-surface-container-high shadow-sm sticky top-0 z-40">
+    <div class="flex flex-wrap md:flex-nowrap justify-between items-center py-2.5 md:py-0 md:h-20 px-4 md:px-8 gap-y-2.5 gap-x-4 w-full max-w-[1440px] mx-auto relative">
+      <!-- Brand Logo & Main Nav Items -->
+      <div class="flex items-center gap-3 md:gap-5 xl:gap-10">
+        <!-- Mobile Hamburger Trigger -->
+        <button type="button" class="lg:hidden p-1.5 -ml-1 rounded-lg text-on-surface hover:bg-surface-container-low hover:text-primary transition-colors" onclick="openMobileMenu()" aria-label="Open Navigation Menu">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+
+        <a class="flex items-center gap-2 md:gap-2.5 group shrink-0" href="#top" onclick="goHome(); return false;">
+          <div class="w-9 h-9 md:w-10 md:h-10 bg-gradient-to-tr from-primary via-rose-500 to-amber-500 flex items-center justify-center rounded-lg shadow-sm group-hover:scale-105 transition-transform">
+            <span class="text-white font-black text-lg md:text-xl italic font-display">M</span>
+          </div>
+          <span class="text-xl md:text-2xl font-black tracking-tight text-primary font-display">MYNTRA</span>
+        </a>
+
+        <!-- Desktop Navigation Items with Mega Menus -->
+        <nav class="hidden lg:flex items-center gap-4 xl:gap-7 pt-4">
+          <!-- MEN -->
+          <div class="nav-item">
+            <a data-nav-key="Men" class="text-on-surface font-bold hover:text-primary pb-4 transition-colors text-sm tracking-wide block cursor-pointer" onclick="filterCategoryByNav('Men')">MEN</a>
+            <div class="mega-menu absolute left-0 right-0 top-full bg-white shadow-2xl border-t border-b border-surface-container-high py-7 z-50">
+              <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-5 gap-8 text-left">
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Topwear</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('T-Shirts', 'Men')">T-Shirts</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Casual Shirts', 'Men')">Casual Shirts</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Formal Shirts', 'Men')">Formal Shirts</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Sweatshirts', 'Men')">Sweatshirts & Hoodies</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Jackets & Coats', 'Men')">Jackets & Coats</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Bottomwear</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Jeans', 'Men')">Jeans</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Casual Trousers', 'Men')">Casual Trousers</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Formal Trousers', 'Men')">Formal Trousers</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Shorts', 'Men')">Shorts & Cargo</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Track Pants', 'Men')">Track Pants & Joggers</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Footwear</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Casual Shoes', 'Men')">Casual Shoes</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Sports Shoes', 'Men')">Sports Shoes</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Formal Shoes', 'Men')">Formal Shoes</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Sneakers', 'Men')">Sneakers</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Indian & Festive</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Kurtas', 'Men')">Kurtas & Kurta Sets</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Sherwanis', 'Men')">Sherwanis</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Nehru Jackets', 'Men')">Nehru Jackets</a></li>
+                  </ul>
+                </div>
+                <div class="bg-surface-container-low p-4 rounded-xl border border-surface-container">
+                  <span class="text-[10px] font-bold text-amber-700 uppercase tracking-widest bg-amber-100 px-1.5 py-0.5 rounded">Trending Now</span>
+                  <h6 class="font-bold text-on-surface text-sm mt-2">Oversized Streetwear</h6>
+                  <p class="text-xs text-on-surface-variant mt-1">Explore drop-shoulder tees, hoodies & heavy denims.</p>
+                  <button type="button" class="mt-3 text-xs text-primary font-extrabold flex items-center gap-1 hover:underline" onclick="filterBySubcategory('Streetwear')">VIEW COLLECTION <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- WOMEN -->
+          <div class="nav-item">
+            <a data-nav-key="Women" class="text-on-surface font-bold hover:text-primary pb-4 transition-colors text-sm tracking-wide block cursor-pointer" onclick="filterCategoryByNav('Women')">WOMEN</a>
+            <div class="mega-menu absolute left-0 right-0 top-full bg-white shadow-2xl border-t border-b border-surface-container-high py-7 z-50">
+              <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-5 gap-8 text-left">
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Indian & Fusion</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Kurtas & Suits', 'Women')">Kurtas & Suits</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Sarees', 'Women')">Sarees & Silk Blouses</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Ethnic Dresses', 'Women')">Ethnic Dresses</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Lehengas', 'Women')">Lehenga Cholis</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Western Wear</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Dresses', 'Women')">Dresses</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Tops', 'Women')">Tops & Tees</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Jeans', 'Women')">Jeans & Jeggings</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Office Wear', 'Women')">Blazers & Waistcoats</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Footwear</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Flats', 'Women')">Flats & Casual</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Heels', 'Women')">Heels & Pumps</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Boots', 'Women')">Boots & Wedges</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Beauty & Jewellery</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Lipsticks & Gloss')">Lipsticks & Gloss</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Skincare Serums')">Skincare Serums</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Perfumes & Mists')">Fragrances</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterByCategoryTile('Jewellery')">Jewellery & Sets</a></li>
+                  </ul>
+                </div>
+                <div class="bg-rose-50 p-4 rounded-xl border border-rose-100">
+                  <span class="text-[10px] font-bold text-primary uppercase tracking-widest bg-rose-100 px-1.5 py-0.5 rounded">Festive Spotlight</span>
+                  <h6 class="font-bold text-on-surface text-sm mt-2">Royal Silk Elegance</h6>
+                  <p class="text-xs text-on-surface-variant mt-1">Vibrant Banarasi silk & festive sets starting ₹699.</p>
+                  <button type="button" class="mt-3 text-xs text-primary font-extrabold flex items-center gap-1 hover:underline" onclick="filterByCategoryTile('Ethnic Wear')">SHOP FESTIVE <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KIDS -->
+          <div class="nav-item">
+            <a data-nav-key="Kids" class="text-on-surface font-bold hover:text-primary pb-4 transition-colors text-sm tracking-wide block cursor-pointer" onclick="filterCategoryByNav('Kids')">KIDS</a>
+            <div class="mega-menu absolute left-0 right-0 top-full bg-white shadow-2xl border-t border-b border-surface-container-high py-7 z-50">
+              <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-8 text-left">
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Boys Clothing</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Boys Clothing', 'Kids')">T-Shirts & Polos</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Boys Clothing', 'Kids')">Jeans & Joggers</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Boys Clothing', 'Kids')">Ethnic Sherwani Sets</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Girls Clothing</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Girls Clothing', 'Kids')">Dresses & Tops</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Girls Clothing', 'Kids')">Jeans & Casual Wear</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Girls Clothing', 'Kids')">Ethnic Lehengas</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Watches & Essentials</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Kids Footwear & Bags', 'Kids')">Kids Watches & Gear</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterCategoryByNav('Kids')">All Kids Collection</a></li>
+                  </ul>
+                </div>
+                <div class="bg-sky-50 p-4 rounded-xl border border-sky-100">
+                  <span class="text-[10px] font-bold text-blue-700 uppercase tracking-widest bg-blue-100 px-1.5 py-0.5 rounded">Kids Carnival</span>
+                  <h6 class="font-bold text-on-surface text-sm mt-2">Min 50% Off Top Brands</h6>
+                  <p class="text-xs text-on-surface-variant mt-1">Gini & Jony, HRX Kids, BownBee, Readiprint.</p>
+                  <button type="button" class="mt-3 text-xs text-blue-700 font-extrabold flex items-center gap-1 hover:underline" onclick="filterCategoryByNav('Kids')">SHOP KIDS <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HOME -->
+          <div class="nav-item">
+            <a data-nav-key="Home" class="text-on-surface font-bold hover:text-primary pb-4 transition-colors text-sm tracking-wide block cursor-pointer" onclick="filterCategoryByNav('Home')">HOME</a>
+            <div class="mega-menu absolute left-0 right-0 top-full bg-white shadow-2xl border-t border-b border-surface-container-high py-7 z-50">
+              <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-8 text-left">
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Bed Linen & Furnishing</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Bedsheets')">Bedsheets & Bath Towels</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Curtains')">Curtains & Sheers</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Cushions')">Cushions & Covers</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Home Decor</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Lamps')">Lamps & Lighting</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Wall Art & Clocks')">Wall Art, Mirrors & Clocks</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Kitchen & Dining</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Dinnerware')">Dinnerware & Serveware</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Drinkware')">Bottles & Drinkware</a></li>
+                  </ul>
+                </div>
+                <div class="bg-amber-50 p-4 rounded-xl border border-amber-100">
+                  <span class="text-[10px] font-bold text-amber-800 uppercase tracking-widest bg-amber-100 px-1.5 py-0.5 rounded">Home Makeover</span>
+                  <h6 class="font-bold text-on-surface text-sm mt-2">Up to 70% Off Decor</h6>
+                  <p class="text-xs text-on-surface-variant mt-1">Elevate your living space with handcrafted accents.</p>
+                  <button type="button" class="mt-3 text-xs text-amber-800 font-extrabold flex items-center gap-1 hover:underline" onclick="filterCategoryByNav('Home')">SHOP HOME <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BEAUTY -->
+          <div class="nav-item">
+            <a data-nav-key="Beauty" class="text-on-surface font-bold hover:text-primary pb-4 transition-colors text-sm tracking-wide block cursor-pointer" onclick="filterCategoryByNav('Beauty')">BEAUTY</a>
+            <div class="mega-menu absolute left-0 right-0 top-full bg-white shadow-2xl border-t border-b border-surface-container-high py-7 z-50">
+              <div class="max-w-[1440px] mx-auto px-12 grid grid-cols-4 gap-8 text-left">
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Makeup</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Lipsticks & Gloss')">Lipsticks & Gloss</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Foundation & Concealer')">Setting Spray & Powder</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Eye Makeup')">Eyeshadow & Mascara</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Skincare & Hair</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Skincare Serums')">Serums & Hair Care</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Sunscreen')">Daily Care & Lotions</a></li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 class="text-primary font-bold text-xs uppercase tracking-wider mb-3">Grooming & Fragrance</h5>
+                  <ul class="space-y-2 text-xs text-on-surface-variant font-medium">
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Perfumes & Mists')">Luxury Perfumes & Mists</a></li>
+                    <li><a class="hover:text-primary transition-colors cursor-pointer" onclick="filterBySubcategory('Grooming', 'Men')">Men's Grooming</a></li>
+                  </ul>
+                </div>
+                <div class="bg-pink-50 p-4 rounded-xl border border-pink-100">
+                  <span class="text-[10px] font-bold text-primary uppercase tracking-widest bg-pink-100 px-1.5 py-0.5 rounded">Luxury Beauty</span>
+                  <h6 class="font-bold text-on-surface text-sm mt-2">Dior, Chanel, Lakmé, WOW</h6>
+                  <p class="text-xs text-on-surface-variant mt-1">100% authentic cosmetics & luxury fragrances.</p>
+                  <button type="button" class="mt-3 text-xs text-primary font-extrabold flex items-center gap-1 hover:underline" onclick="filterCategoryByNav('Beauty')">SHOP BEAUTY <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- GENZ -->
+          <div class="nav-item">
+            <a data-nav-key="GenZ" class="text-on-surface font-bold hover:text-primary pb-4 transition-colors text-sm tracking-wide flex items-center gap-1 cursor-pointer" onclick="filterBySubcategory('Streetwear')">
+              GENZ
+              <span class="text-[9px] bg-primary text-white font-extrabold px-1 rounded leading-tight">NEW</span>
+            </a>
+          </div>
+
+          <!-- STUDIO -->
+          <div class="nav-item">
+            <a data-nav-key="Studio" class="text-on-surface font-bold hover:text-primary pb-4 transition-colors text-sm tracking-wide relative flex items-center gap-1 cursor-pointer" onclick="openStudioModal()">
+              STUDIO
+              <span class="text-[9px] bg-amber-500 text-white px-1 rounded leading-tight font-extrabold">NEW</span>
+            </a>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Search Bar & Trailing Action Icons -->
+      <div class="flex items-center gap-4 md:gap-6 flex-1 justify-end w-full md:w-auto order-last md:order-none basis-full md:basis-auto">
+        <!-- Search Input -->
+        <div class="relative w-full md:max-w-md">
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-on-surface-variant">
+            <span class="material-symbols-outlined text-lg">search</span>
+          </div>
+          <input class="w-full pl-10 pr-9 py-2 md:py-2.5 bg-surface-container-low text-xs md:text-sm font-medium rounded-lg border border-transparent focus:border-surface-container-high focus:bg-white focus:ring-1 focus:ring-primary transition-all placeholder:text-outline outline-none" id="searchInput" placeholder="Search for products, brands and more" type="text" autocomplete="off"/>
+          <!-- Clear search button -->
+          <button type="button" id="clearSearchBtn" class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-outline hover:text-primary" onclick="clearSearch()" aria-label="Clear search">
+            <span class="material-symbols-outlined text-base">close</span>
+          </button>
+
+          <!-- Suggestions & Live Match Dropdown -->
+          <div class="hidden absolute left-0 right-0 top-full mt-2 bg-white shadow-2xl rounded-lg border border-surface-container-high py-2 z-50 overflow-hidden" id="searchDropdown">
+            <div id="searchDropdownDefault">
+              <div class="px-4 py-1.5 text-[11px] font-bold text-outline uppercase tracking-wider">Popular Searches</div>
+              <div class="cursor-pointer px-4 py-2 hover:bg-surface-container-low text-xs flex items-center justify-between" onclick="executeQuickSearch('Kurta')">
+                <span class="font-medium">Kurtas & Sets for Women & Men</span>
+                <span class="material-symbols-outlined text-outline text-base">trending_up</span>
+              </div>
+              <div class="cursor-pointer px-4 py-2 hover:bg-surface-container-low text-xs flex items-center justify-between" onclick="executeQuickSearch('Sneakers')">
+                <span class="font-medium">Sneakers & Sports Shoes</span>
+                <span class="material-symbols-outlined text-outline text-base">trending_up</span>
+              </div>
+              <div class="cursor-pointer px-4 py-2 hover:bg-surface-container-low text-xs flex items-center justify-between" onclick="executeQuickSearch('Saree')">
+                <span class="font-medium">Silk & Organza Sarees</span>
+                <span class="material-symbols-outlined text-outline text-base">trending_up</span>
+              </div>
+              <div class="cursor-pointer px-4 py-2 hover:bg-surface-container-low text-xs flex items-center justify-between" onclick="executeQuickSearch('Jewellery')">
+                <span class="font-medium">Kundan & Oxidised Jewellery</span>
+                <span class="material-symbols-outlined text-outline text-base">trending_up</span>
+              </div>
+              <div class="cursor-pointer px-4 py-2 hover:bg-surface-container-low text-xs flex items-center justify-between" onclick="executeQuickSearch('Perfume')">
+                <span class="font-medium">Luxury Perfumes & Lipsticks</span>
+                <span class="material-symbols-outlined text-outline text-base">trending_up</span>
+              </div>
+            </div>
+            <!-- Live Search Results Container -->
+            <div id="searchResultsLive" class="hidden max-h-80 overflow-y-auto divide-y divide-surface-container-high"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trailing Actions (Profile, Wishlist, Bag) -->
+      <div class="flex items-center gap-4 sm:gap-5 xl:gap-6 shrink-0 pr-0.5">
+        <!-- Profile Dropdown Trigger -->
+        <div class="relative group cursor-pointer text-center" id="profileContainer">
+          <button type="button" class="flex flex-col items-center text-on-surface hover:text-primary transition-colors duration-150 active:scale-95" id="profileBtn" onclick="toggleProfileDropdown()">
+            <span class="material-symbols-outlined">person</span>
+            <span class="text-[10px] md:text-[11px] font-bold mt-0.5" id="profileLabel">Profile</span>
+          </button>
+          <div class="absolute right-0 top-full pt-3 hidden group-hover:block w-64 z-50" id="profileCard">
+            <div class="bg-white rounded-lg shadow-xl border border-surface-container-high p-4 text-left">
+              <div class="border-b border-surface-container pb-3" id="profileHeaderArea">
+                <div class="text-sm text-on-surface font-extrabold" id="profileWelcomeText">Welcome</div>
+                <div class="text-xs text-on-surface-variant truncate" id="profileSubText">To access wishlist & orders</div>
+                <div id="authButtonsRow" class="mt-3 flex gap-2">
+                  <button type="button" class="flex-1 py-2 bg-primary text-white text-[11px] font-bold rounded uppercase tracking-wider hover:bg-primary-dark transition-colors" id="authActionBtn" onclick="openLoginModal('login')">LOGIN</button>
+                  <button type="button" class="flex-1 py-2 border border-primary text-primary text-[11px] font-bold rounded uppercase tracking-wider hover:bg-primary-container transition-colors" onclick="openLoginModal('register')">REGISTER</button>
+                </div>
+              </div>
+              <div class="pt-2 flex flex-col gap-1 text-xs font-medium">
+                <a id="profileEditLink" class="hidden py-1.5 hover:text-primary transition-colors flex items-center justify-between cursor-pointer font-semibold" onclick="openProfileModal()">My Account & Address <span class="material-symbols-outlined text-sm">edit</span></a>
+                <a class="py-1.5 hover:text-primary transition-colors flex items-center justify-between cursor-pointer" onclick="openOrdersModal()">Orders <span id="profileOrdersBadge" class="hidden text-[10px] bg-primary text-white font-bold px-1.5 py-0.2 rounded-full">0</span></a>
+                <a class="py-1.5 hover:text-primary transition-colors flex items-center justify-between cursor-pointer" onclick="openWishlistDrawer()">Wishlist <span class="text-xs text-primary font-bold" id="profileWishlistCounter">4</span></a>
+                <a class="py-1.5 hover:text-primary transition-colors flex items-center justify-between cursor-pointer" onclick="openInfoModal('giftcards')">Gift Cards</a>
+                <a class="py-1.5 hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('contact')">Contact Us</a>
+                <a class="py-1.5 text-primary font-bold flex items-center justify-between cursor-pointer" onclick="openInfoModal('insider')">Myntra Insider <span class="text-[10px] bg-amber-100 text-amber-800 px-1 rounded">VIP</span></a>
+                <div id="logoutSection" class="hidden border-t border-surface-container-high pt-2 mt-1">
+                  <button type="button" class="text-left w-full text-error font-bold py-1 hover:underline" onclick="performLogout()">Log Out</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Wishlist Action -->
+        <button type="button" class="flex flex-col items-center text-on-surface hover:text-primary transition-colors duration-150 active:scale-95 cursor-pointer" onclick="openWishlistDrawer()" aria-label="Open Wishlist">
+          <span class="relative inline-flex">
+            <span class="material-symbols-outlined">favorite</span>
+            <span class="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-transform" id="wishlistCount">4</span>
+          </span>
+          <span class="text-[10px] md:text-[11px] font-bold mt-0.5">Wishlist</span>
+        </button>
+
+        <!-- Bag / Cart Action -->
+        <button type="button" class="flex flex-col items-center text-on-surface hover:text-primary transition-colors duration-150 active:scale-95 cursor-pointer" onclick="openCartDrawer()" aria-label="Open Shopping Bag">
+          <span class="relative inline-flex">
+            <span class="material-symbols-outlined">shopping_bag</span>
+            <span class="absolute -top-1.5 -right-2 bg-primary text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-transform" id="cartCount">2</span>
+          </span>
+          <span class="text-[10px] md:text-[11px] font-bold mt-0.5">Bag</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Canvas Content Area -->
+  <main id="top" class="w-full max-w-[1440px] mx-auto px-4 md:px-8 py-6 flex flex-col gap-8">
+    <!-- Mega Festive Hero Banner Carousel -->
+    <section id="heroCarousel" class="relative rounded-xl overflow-hidden shadow-sm border border-surface-container-high bg-gradient-to-r from-amber-700 via-rose-900 to-amber-900 text-white">
+      <div id="heroSlideContainer" class="grid grid-cols-1 md:grid-cols-12 min-h-[430px] md:min-h-[460px] items-center relative">
+        <!-- Left Branding & Callout -->
+        <div class="md:col-span-5 py-8 pl-14 pr-14 sm:pl-16 sm:pr-16 md:py-12 md:pl-16 md:pr-8 z-10 flex flex-col justify-center space-y-4">
+          <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold w-fit border border-white/30">
+            <span id="heroBadgeIcon" class="material-symbols-outlined text-amber-300 text-base">stars</span>
+            <span id="heroBadgeText">BIG FASHION FESTIVAL</span>
+          </div>
+          <h1 id="heroTitle" class="text-3xl sm:text-4xl md:text-5xl font-black font-display tracking-tight leading-none text-white drop-shadow-md">
+            GRAND <br/><span class="text-amber-300">50-90% OFF</span>
+          </h1>
+          <p id="heroSubtitle" class="text-sm md:text-base text-white/90 max-w-md font-medium leading-relaxed">
+            India's Biggest Fashion Celebration with 10 Lakh+ Styles & Unbeatable festive prices across top luxury and everyday labels.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
+            <button type="button" id="heroCtaBtn" class="bg-primary hover:bg-primary-dark text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg text-xs sm:text-sm font-bold uppercase tracking-wider shadow-lg transition-transform active:scale-95 flex items-center gap-2" onclick="scrollToDeals()">
+              <span id="heroCtaText">EXPLORE NOW</span>
+              <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </button>
+            <div id="heroOfferBox" class="text-xs bg-black/40 backdrop-blur-sm px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-white/20 flex items-center gap-3 cursor-pointer hover:bg-black/60 transition-colors" onclick="openInfoModal('offers')">
+              <span class="material-symbols-outlined text-amber-300">credit_card</span>
+              <div>
+                <div id="heroOfferTitle" class="font-bold text-white">10% Instant Discount*</div>
+                <div id="heroOfferSub" class="opacity-80">On Leading Bank Cards & EMI</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right Visual Lifestyle Image -->
+        <div class="md:col-span-7 h-full w-full relative min-h-[280px] sm:min-h-[340px] md:min-h-[460px] cursor-pointer" onclick="scrollToDeals()">
+          <img id="heroSlideImage" class="w-full h-full object-cover object-center absolute inset-0 transition-opacity duration-300" alt="Festive Indian High-Fashion couple in traditional wedding ethnic attire" src="assets/images/hero/hero-1.jpg"/>
+          <div id="heroImageOverlay" class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-amber-950/90 via-transparent to-transparent pointer-events-none"></div>
+        </div>
+
+        <!-- Carousel Prev / Next Controls -->
+        <button type="button" id="heroPrevBtn" onclick="prevHeroSlide()" aria-label="Previous slide" class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm flex items-center justify-center transition-all border border-white/20 shadow-lg">
+          <span class="material-symbols-outlined text-xl">chevron_left</span>
+        </button>
+        <button type="button" id="heroNextBtn" onclick="nextHeroSlide()" aria-label="Next slide" class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 md:w-10 md:h-10 rounded-full bg-black/45 hover:bg-black/75 text-white backdrop-blur-sm flex items-center justify-center transition-all border border-white/20 shadow-lg">
+          <span class="material-symbols-outlined text-xl">chevron_right</span>
+        </button>
+
+        <!-- Carousel Slide Dots -->
+        <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
+          <button type="button" class="hero-dot w-6 h-2 rounded-full bg-white transition-all cursor-pointer" onclick="goToHeroSlide(0)" aria-label="Slide 1"></button>
+          <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 hover:bg-white/80 transition-all cursor-pointer" onclick="goToHeroSlide(1)" aria-label="Slide 2"></button>
+          <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 hover:bg-white/80 transition-all cursor-pointer" onclick="goToHeroSlide(2)" aria-label="Slide 3"></button>
+          <button type="button" class="hero-dot w-2 h-2 rounded-full bg-white/45 hover:bg-white/80 transition-all cursor-pointer" onclick="goToHeroSlide(3)" aria-label="Slide 4"></button>
+        </div>
+      </div>
+
+      <!-- Partner Brands Bar (Clickable filters) -->
+      <div class="bg-white text-on-surface py-3 px-4 md:px-6 border-t border-surface-container-high flex flex-wrap items-center justify-between gap-3 md:gap-4">
+        <span class="text-[11px] md:text-xs text-outline uppercase tracking-wider font-bold">POWERED BY LEADING BRANDS</span>
+        <div class="flex items-center gap-5 md:gap-8 overflow-x-auto custom-scroll py-1">
+          <button type="button" class="font-black text-xs md:text-sm tracking-tighter text-on-surface hover:text-primary transition-colors cursor-pointer shrink-0" onclick="filterByBrand('PUMA')">PUMA</button>
+          <button type="button" class="font-serif italic font-bold text-xs md:text-sm text-on-surface hover:text-primary transition-colors cursor-pointer shrink-0" onclick="filterByBrand('RARE RABBIT')">RARE RABBIT</button>
+          <button type="button" class="font-mono font-bold text-xs md:text-sm tracking-tight text-on-surface hover:text-primary transition-colors cursor-pointer shrink-0" onclick="filterByBrand('U.S. POLO ASSN.')">U.S. POLO ASSN.</button>
+          <button type="button" class="font-sans font-extrabold text-xs md:text-sm text-primary cursor-pointer hover:opacity-80 transition-opacity shrink-0" onclick="filterByBrand('INDO ERA')">INDO ERA</button>
+          <button type="button" class="font-black tracking-widest text-xs md:text-sm text-secondary cursor-pointer hover:opacity-80 transition-opacity shrink-0" onclick="filterByBrand('COMET')">COMET</button>
+          <button type="button" class="text-xs md:text-sm font-bold text-on-surface-variant cursor-pointer hover:text-primary transition-colors shrink-0" onclick="filterByBrand('MANGO')">MANGO</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Active Filter Notification Bar (Appears when filtered) -->
+    <div id="filterNotificationBar" class="hidden bg-rose-50 border border-primary/20 rounded-xl p-3 px-5 flex flex-wrap items-center justify-between gap-2 text-sm">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">filter_list</span>
+        <span>Showing results filtered by: <strong id="filterValueDisplay" class="text-primary font-bold"></strong></span>
+      </div>
+      <button type="button" class="text-xs font-bold text-primary hover:underline flex items-center gap-1" onclick="clearFilters()">
+        <span class="material-symbols-outlined text-sm">close</span>
+        Reset Filters
+      </button>
+    </div>
+
+    <!-- OMG Flash Deals Row -->
+    <section class="flex flex-col gap-4" id="omgDealsSection">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-black">!</div>
+          <div>
+            <h2 class="text-xl font-black tracking-tight uppercase font-display">OMG DEALS</h2>
+            <p class="text-xs text-on-surface-variant">Biggest Savings All Day • Limited Inventory</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-primary font-bold bg-rose-100 px-3 py-1 rounded-full font-mono" id="flashTimer">ENDS IN 04h : 22m : 15s</span>
+          <button type="button" onclick="setCatalogSort('discount'); scrollToCatalog();" class="text-xs font-extrabold text-primary hover:underline flex items-center gap-0.5">
+            View All Deals <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 6-Column Deals Showcase (Rendered dynamically) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3" id="dealsGrid"></div>
+    </section>
+
+    <!-- SHOP BY CATEGORY SECTION -->
+    <section class="pt-4 flex flex-col gap-6" id="categories">
+      <div class="text-center">
+        <h2 class="text-2xl md:text-3xl font-black font-display tracking-tight text-on-surface uppercase">
+          SHOP BY CATEGORY
+        </h2>
+        <div class="w-16 h-1 bg-primary mx-auto mt-2 rounded-full"></div>
+      </div>
+      <div class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-9 gap-3">
+        <!-- Category Item 1 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Ethnic Wear')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-rose-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Ethnic Wear" src="assets/images/categories/cat-ethnic.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Ethnic Wear</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-primary font-extrabold">50-80% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 2 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Casual Wear')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-amber-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Casual Wear" src="assets/images/categories/cat-casual.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Casual Wear</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-secondary font-extrabold">40-80% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 3 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Office Wear')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-blue-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Office Wear" src="assets/images/categories/cat-office.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Office Wear</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-primary font-extrabold">40-70% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 4 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Western Wear')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-pink-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Western Wear" src="assets/images/categories/cat-western.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Western Wear</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-secondary font-extrabold">40-80% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 5 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Footwear')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-teal-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Footwear" src="assets/images/categories/cat-footwear.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Footwear</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-primary font-extrabold">50-70% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 6 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Jewellery')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-amber-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Jewellery" src="assets/images/categories/cat-jewellery.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Jewellery</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-secondary font-extrabold">UP TO 80% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 7 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Kids')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-sky-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Kids Fashion" src="assets/images/categories/cat-kids.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Kids</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-primary font-extrabold">MIN. 50% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 8 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Home')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-emerald-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Home & Living" src="assets/images/categories/cat-home.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Home</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-secondary font-extrabold">UP TO 70% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+        <!-- Category Item 9 -->
+        <div class="group flex flex-col items-center bg-white rounded-xl p-2.5 border border-surface-container hover:border-primary transition-all duration-200 hover:-translate-y-1 cursor-pointer" onclick="filterByCategoryTile('Beauty')">
+          <div class="w-full aspect-square rounded-full overflow-hidden bg-fuchsia-50 p-1 mb-2.5">
+            <img class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" alt="Beauty & Grooming" src="assets/images/categories/cat-beauty.jpg"/>
+          </div>
+          <div class="text-center">
+            <h3 class="text-xs sm:text-sm font-bold text-on-surface">Beauty</h3>
+            <span class="inline-block mt-0.5 text-[11px] text-primary font-extrabold">30-60% OFF</span>
+            <div class="text-[10px] text-on-surface-variant underline mt-0.5 group-hover:text-primary">Shop Now</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL PRODUCT CATALOG, FILTER & SORT SECTION -->
+    <section id="catalogSection" class="pt-4 flex flex-col gap-5 scroll-mt-24">
+      <!-- Top Catalog Toolbar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-surface-container-high">
+        <div>
+          <h2 id="catalogHeading" class="text-xl md:text-2xl font-black font-display tracking-tight text-on-surface uppercase">EXPLORE ALL STYLES</h2>
+          <p id="catalogCountLabel" class="text-xs text-on-surface-variant mt-0.5">Showing 1–20 of 180 products</p>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <!-- Mobile Filters Trigger -->
+          <button type="button" onclick="openMobileFilterDrawer()" class="lg:hidden px-3.5 py-2 bg-white border border-surface-container-high rounded-lg text-xs font-bold text-on-surface flex items-center gap-1.5 hover:border-primary">
+            <span class="material-symbols-outlined text-base text-primary">tune</span>
+            <span>Filters</span>
+          </button>
+
+          <!-- Sort Dropdown -->
+          <div class="flex items-center gap-2 bg-white border border-surface-container-high rounded-lg px-3 py-1.5">
+            <span class="text-[11px] font-bold text-outline uppercase hidden sm:inline">Sort by:</span>
+            <select id="catalogSortSelect" onchange="setCatalogSort(this.value)" class="text-xs font-bold text-on-surface bg-transparent border-none focus:ring-0 p-0 pr-6 cursor-pointer" aria-label="Sort products">
+              <option value="recommended">Recommended</option>
+              <option value="price-asc">Price: Low to High</option>
+              <option value="price-desc">Price: High to Low</option>
+              <option value="newest">Newest Arrivals</option>
+              <option value="rating">Popularity & Rating</option>
+              <option value="discount">Better Discount</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Filter Chips Row -->
+      <div id="activeFilterChips" class="hidden flex flex-wrap items-center gap-2"></div>
+
+      <!-- Sidebar + Grid Container -->
+      <div class="flex items-start gap-6">
+        <!-- Desktop Left Filter Sidebar -->
+        <aside id="desktopFilterSidebar" class="hidden lg:block w-64 shrink-0 bg-white rounded-xl border border-surface-container-high p-4 sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto custom-scroll"></aside>
+
+        <!-- Product Grid & Pagination -->
+        <div class="flex-1 min-w-0">
+          <div id="catalogGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4"></div>
+          <div id="catalogPagination"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- App Knockout Promo Banner -->
+    <section class="rounded-xl p-6 md:p-8 bg-gradient-to-r from-amber-500 via-primary to-rose-600 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-md">
+      <div class="flex items-center gap-5 md:gap-6">
+        <div class="w-14 h-14 md:w-16 md:h-16 bg-white rounded-xl flex items-center justify-center text-primary font-black text-2xl md:text-3xl font-display shadow-lg shrink-0">
+          M
+        </div>
+        <div>
+          <span class="bg-amber-300 text-amber-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">APP EXCLUSIVE</span>
+          <h3 class="text-lg md:text-2xl font-black font-display text-white mt-1">MORE KNOCKOUT OFFERS WAITING!</h3>
+          <p class="text-xs md:text-sm opacity-90">Download the Myntra App to unlock extra ₹500 discount & free shipping on first orders.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 md:gap-4 shrink-0">
+        <button type="button" class="bg-white text-on-surface hover:text-primary px-4 md:px-5 py-2.5 rounded-lg text-xs font-bold flex items-center gap-2 shadow transition-all active:scale-95" onclick="openInfoModal('app')">
+          <span class="material-symbols-outlined text-base">android</span>
+          <span>Google Play</span>
+        </button>
+        <button type="button" class="bg-white text-on-surface hover:text-primary px-4 md:px-5 py-2.5 rounded-lg text-xs font-bold flex items-center gap-2 shadow transition-all active:scale-95" onclick="openInfoModal('app')">
+          <span class="material-symbols-outlined text-base">file_download</span>
+          <span>App Store</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Trust & Quality Metrics Strip -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-4 border-y border-surface-container-high">
+      <div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-colors" onclick="openInfoModal('authenticity')">
+        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shadow-sm shrink-0">
+          <span class="material-symbols-outlined text-2xl">verified</span>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-on-surface">100% ORIGINAL guarantee</h4>
+          <p class="text-xs text-on-surface-variant">for all products sourced directly from authorized brands.</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg cursor-pointer hover:bg-surface-container transition-colors" onclick="openInfoModal('returns')">
+        <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-secondary shadow-sm shrink-0">
+          <span class="material-symbols-outlined text-2xl">sync</span>
+        </div>
+        <div>
+          <h4 class="text-sm font-bold text-on-surface">Return within 14 days</h4>
+          <p class="text-xs text-on-surface-variant">of receiving your order. Hassle-free pickups at your doorstep.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-surface-container-high mt-12">
+    <div class="w-full max-w-[1440px] mx-auto px-6 md:px-12 py-12 flex flex-col gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Col 1 -->
+        <div class="flex flex-col gap-2">
+          <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">ONLINE SHOPPING</h4>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="filterCategoryByNav('Men')">Men</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="filterCategoryByNav('Women')">Women</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="filterCategoryByNav('Kids')">Kids</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="filterCategoryByNav('Home')">Home & Living</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="filterCategoryByNav('Beauty')">Beauty</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('giftcards')">Gift Cards</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('insider')">Myntra Insider</a>
+        </div>
+        <!-- Col 2 -->
+        <div class="flex flex-col gap-2">
+          <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">CUSTOMER POLICIES</h4>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('contact')">Contact Us</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('faq')">FAQ</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('terms')">T&C</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openOrdersModal()">Track Orders</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('shipping')">Shipping</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('returns')">Returns</a>
+          <a class="text-xs text-on-surface-variant hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('privacy')">Privacy policy</a>
+        </div>
+        <!-- Col 3 -->
+        <div class="flex flex-col gap-4">
+          <div>
+            <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">EXPERIENCE MYNTRA APP ON MOBILE</h4>
+            <div class="flex items-center gap-3 mt-2">
+              <button type="button" class="bg-[#282c3f] text-white px-3 py-1.5 rounded flex items-center gap-2 hover:opacity-90 active:scale-95 transition-transform" onclick="openInfoModal('app')">
+                <span class="material-symbols-outlined text-sm">android</span>
+                <span class="text-[11px] font-bold">Google Play</span>
+              </button>
+              <button type="button" class="bg-[#282c3f] text-white px-3 py-1.5 rounded flex items-center gap-2 hover:opacity-90 active:scale-95 transition-transform" onclick="openInfoModal('app')">
+                <span class="material-symbols-outlined text-sm">file_download</span>
+                <span class="text-[11px] font-bold">App Store</span>
+              </button>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">KEEP IN TOUCH</h4>
+            <div class="flex items-center gap-3 text-on-surface-variant">
+              <button type="button" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:text-primary transition-colors cursor-pointer" onclick="openStudioModal()" aria-label="Myntra Studio Social">
+                <span class="material-symbols-outlined text-base">public</span>
+              </button>
+              <button type="button" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:text-primary transition-colors cursor-pointer" onclick="openStudioModal()" aria-label="Myntra Lookbooks">
+                <span class="material-symbols-outlined text-base">photo_camera</span>
+              </button>
+              <button type="button" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center hover:text-primary transition-colors cursor-pointer" onclick="openInfoModal('app')" aria-label="Myntra Video App">
+                <span class="material-symbols-outlined text-base">play_circle</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Col 4 -->
+        <div class="flex flex-col gap-2">
+          <h4 class="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">REGISTERED OFFICE ADDRESS</h4>
+          <p class="text-xs text-on-surface-variant leading-relaxed">
+            Buildings Alyssa, Begonia and Clover situated in Embassy Tech Village,<br/>
+            Outer Ring Road, Devarabeesanahalli Village, Varthur Hobli,<br/>
+            Bengaluru – 560103, India<br/>
+            CIN: U72300KA2007PTC041799<br/>
+            Telephone: <a class="text-primary font-bold hover:underline" href="tel:08040011450">080-40011450</a>
+          </p>
+        </div>
+      </div>
+      <!-- Copyright Bar -->
+      <div class="border-t border-surface-container-high pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-on-surface-variant">
+          © 2026 www.myntra.com. All rights reserved. A Flipkart company.
+        </p>
+        <div class="text-xs text-on-surface-variant">
+          In case of any concern, <a class="text-primary font-bold hover:underline cursor-pointer" onclick="openInfoModal('contact')">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- INTERACTIVE MODALS, DRAWERS & TOASTS -->
+  <!-- ========================================== -->
+
+  <!-- Mobile Navigation Menu Drawer -->
+  <div id="mobileMenuDrawer" class="hidden fixed inset-0 z-50 overflow-hidden bg-black/50 backdrop-blur-sm">
+    <div class="absolute inset-y-0 left-0 max-w-full flex pr-10">
+      <div class="w-72 sm:w-80 bg-white shadow-2xl border-r border-surface-container-high flex flex-col justify-between h-full overflow-y-auto">
+        <div>
+          <div class="p-4 border-b border-surface-container flex items-center justify-between bg-gradient-to-r from-[#282c3f] to-rose-900 text-white">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center font-black italic">M</div>
+              <div>
+                <div class="text-sm font-black tracking-tight">MYNTRA</div>
+                <div class="text-[10px] text-white/80">Shop All Categories</div>
+              </div>
+            </div>
+            <button type="button" onclick="closeMobileMenu()" class="p-1 rounded-full hover:bg-white/10" aria-label="Close Menu">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+
+          <div class="p-4 space-y-1.5 text-sm font-bold">
+            <button type="button" onclick="filterCategoryByNav('Men')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-primary-container hover:text-primary flex items-center justify-between"><span>MEN</span><span class="material-symbols-outlined text-base text-outline">chevron_right</span></button>
+            <button type="button" onclick="filterCategoryByNav('Women')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-primary-container hover:text-primary flex items-center justify-between"><span>WOMEN</span><span class="material-symbols-outlined text-base text-outline">chevron_right</span></button>
+            <button type="button" onclick="filterCategoryByNav('Kids')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-primary-container hover:text-primary flex items-center justify-between"><span>KIDS</span><span class="material-symbols-outlined text-base text-outline">chevron_right</span></button>
+            <button type="button" onclick="filterCategoryByNav('Home')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-primary-container hover:text-primary flex items-center justify-between"><span>HOME & LIVING</span><span class="material-symbols-outlined text-base text-outline">chevron_right</span></button>
+            <button type="button" onclick="filterCategoryByNav('Beauty')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-primary-container hover:text-primary flex items-center justify-between"><span>BEAUTY</span><span class="material-symbols-outlined text-base text-outline">chevron_right</span></button>
+            <button type="button" onclick="filterBySubcategory('Streetwear')" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-primary-container hover:text-primary flex items-center justify-between"><span>GENZ STREETWEAR <span class="text-[9px] bg-primary text-white px-1.5 py-0.5 rounded ml-1">NEW</span></span><span class="material-symbols-outlined text-base text-outline">chevron_right</span></button>
+            <button type="button" onclick="openStudioModal()" class="w-full text-left px-3 py-2.5 rounded-lg hover:bg-primary-container hover:text-primary flex items-center justify-between"><span>MYNTRA STUDIO</span><span class="material-symbols-outlined text-base text-outline">chevron_right</span></button>
+          </div>
+
+          <div class="px-4 pt-2 pb-4 border-t border-surface-container space-y-1 text-xs font-semibold text-on-surface-variant">
+            <button type="button" onclick="closeMobileMenu(); openLoginModal('login')" class="w-full text-left px-3 py-2 rounded-lg hover:bg-surface-container-low">Login / Register</button>
+            <button type="button" onclick="closeMobileMenu(); openOrdersModal()" class="w-full text-left px-3 py-2 rounded-lg hover:bg-surface-container-low">My Orders</button>
+            <button type="button" onclick="closeMobileMenu(); openWishlistDrawer()" class="w-full text-left px-3 py-2 rounded-lg hover:bg-surface-container-low">Wishlist</button>
+            <button type="button" onclick="closeMobileMenu(); openCartDrawer()" class="w-full text-left px-3 py-2 rounded-lg hover:bg-surface-container-low">Shopping Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Filter Drawer -->
+  <div id="mobileFilterDrawer" class="hidden fixed inset-0 z-50 overflow-hidden bg-black/50 backdrop-blur-sm">
+    <div class="absolute inset-y-0 left-0 max-w-full flex pr-10">
+      <div class="w-80 bg-white shadow-2xl border-r border-surface-container-high flex flex-col h-full">
+        <div class="p-4 border-b border-surface-container flex items-center justify-between">
+          <span class="font-black text-sm uppercase">Refine Products</span>
+          <button type="button" onclick="closeMobileFilterDrawer()" class="p-1 rounded-full hover:bg-surface-container" aria-label="Close Filters">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div id="mobileFilterBody" class="flex-1 overflow-y-auto p-4"></div>
+        <div class="p-4 border-t border-surface-container">
+          <button type="button" onclick="closeMobileFilterDrawer()" class="w-full py-2.5 bg-primary text-white text-xs font-bold rounded-lg uppercase tracking-wider">Apply & View Results</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Quick View / Details Modal -->
+  <div id="productModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-xl max-w-3xl w-full overflow-hidden shadow-2xl border border-surface-container-high flex flex-col md:flex-row max-h-[90vh]">
+      <!-- Close Button -->
+      <button type="button" class="absolute top-4 right-4 z-20 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-colors shadow-sm" onclick="closeProductQuickView()" aria-label="Close Product Details">
+        <span class="material-symbols-outlined text-lg">close</span>
+      </button>
+      <!-- Modal Image Side -->
+      <div class="md:w-1/2 bg-surface-container-low relative aspect-[3/4] md:aspect-auto shrink-0">
+        <img id="modalProductImage" src="assets/images/products/deal-1.jpg" alt="Product view" class="w-full h-full object-cover"/>
+        <div id="modalProductBadge" class="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded text-xs font-bold text-primary">
+          MIN. 60% OFF
+        </div>
+      </div>
+      <!-- Modal Details Side -->
+      <div class="md:w-1/2 p-5 sm:p-6 flex flex-col justify-between overflow-y-auto">
+        <div>
+          <div id="modalProductCategory" class="text-[11px] font-bold text-outline uppercase tracking-wider mb-1">Women • Ethnic Wear</div>
+          <div class="flex items-center justify-between gap-2">
+            <span id="modalProductBrand" class="text-lg font-black uppercase text-on-surface tracking-tight font-display">BRAND</span>
+            <div class="flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded text-xs font-bold text-on-surface shrink-0">
+              <span id="modalProductRating">4.3</span>
+              <span class="material-symbols-outlined text-xs text-amber-500 fill">star</span>
+              <span id="modalProductReviews" class="text-outline">| 2.1k</span>
+            </div>
+          </div>
+          <h3 id="modalProductTitle" class="text-sm text-on-surface-variant mt-0.5 font-medium">Product Title</h3>
+
+          <!-- Pricing -->
+          <div class="mt-3 pb-3 border-b border-surface-container flex items-baseline gap-2.5 flex-wrap">
+            <span id="modalProductPrice" class="text-2xl font-extrabold text-on-surface font-display">₹699</span>
+            <span id="modalProductOriginal" class="text-sm text-outline line-through">₹1,999</span>
+            <span id="modalProductDiscount" class="text-xs text-primary font-bold">(65% OFF)</span>
+            <span class="text-[11px] text-success font-bold ml-auto">inclusive of all taxes</span>
+          </div>
+
+          <!-- Description -->
+          <p id="modalProductDescription" class="text-xs text-on-surface-variant leading-relaxed mt-3"></p>
+
+          <!-- Color Variations Selector -->
+          <div id="colorSelectorWrap" class="mt-4">
+            <div class="text-xs font-bold text-on-surface uppercase tracking-wider mb-2">
+              COLOR: <span id="selectedColorName" class="text-primary font-extrabold">Classic</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2" id="colorSelector"></div>
+          </div>
+
+          <!-- Size Selector -->
+          <div class="mt-4">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-on-surface uppercase tracking-wider">SELECT SIZE</span>
+              <button type="button" class="text-xs text-primary font-bold hover:underline" onclick="openSizeChartModal()">SIZE CHART</button>
+            </div>
+            <div class="flex flex-wrap items-center gap-2" id="sizeSelector"></div>
+          </div>
+
+          <!-- Pincode Delivery Checker -->
+          <div class="mt-4 pt-3 border-t border-surface-container">
+            <label class="text-[11px] font-bold uppercase tracking-wider text-on-surface block mb-1">Check Delivery & Services</label>
+            <div class="flex items-center gap-2">
+              <input type="text" id="pincodeInput" maxlength="6" placeholder="Enter 6-digit Pincode" class="w-full px-3 py-2 text-xs bg-surface-container-low rounded-lg border border-surface-container focus:ring-1 focus:ring-primary outline-none" value="560103"/>
+              <button type="button" class="px-4 py-2 bg-[#282c3f] text-white text-xs font-bold rounded-lg hover:opacity-90 whitespace-nowrap" onclick="checkPincode()">Check</button>
+            </div>
+            <p id="pincodeFeedback" class="text-xs text-success mt-1.5 flex items-center gap-1 font-medium">
+              <span class="material-symbols-outlined text-sm">local_shipping</span> Delivery by tomorrow, FREE
+            </p>
+          </div>
+        </div>
+
+        <!-- Action CTAs -->
+        <div class="pt-4 mt-4 border-t border-surface-container flex flex-col gap-2">
+          <div class="flex items-center gap-3">
+            <button type="button" class="flex-1 py-3 bg-primary hover:bg-primary-dark text-white text-xs font-bold rounded-lg uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95" onclick="addToBagFromModal()">
+              <span class="material-symbols-outlined text-base">shopping_bag</span>
+              <span>ADD TO BAG</span>
+            </button>
+            <button type="button" id="modalWishlistBtn" class="py-3 px-4 rounded-lg border border-surface-container-high hover:border-primary text-on-surface flex items-center justify-center gap-2 text-xs font-bold transition-colors" onclick="toggleModalWishlist()">
+              <span class="material-symbols-outlined text-base" id="modalWishlistIcon">favorite</span>
+              <span id="modalWishlistText">WISHLIST</span>
+            </button>
+          </div>
+          <button type="button" onclick="viewSimilarFromModal()" class="text-[11px] text-primary font-bold hover:underline text-center py-1">
+            View Similar Products in this Category →
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Slide-Over Drawer -->
+  <div id="wishlistDrawer" class="hidden fixed inset-0 z-50 overflow-hidden bg-black/50 backdrop-blur-sm transition-opacity">
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white shadow-2xl border-l border-surface-container-high flex flex-col justify-between h-full">
+        <div class="p-5 border-b border-surface-container flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary fill">favorite</span>
+            <h3 class="font-bold text-on-surface text-base">MY WISHLIST (<span id="wishlistDrawerCount">4</span>)</h3>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="clearWishlist()" class="text-[11px] font-bold text-error hover:underline px-2 py-1">Clear All</button>
+            <button type="button" class="p-1 rounded-full hover:bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="closeWishlistDrawer()" aria-label="Close Wishlist">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+        </div>
+        <div class="flex-1 overflow-y-auto p-5 divide-y divide-surface-container" id="wishlistItemsList"></div>
+        <div class="p-4 border-t border-surface-container bg-surface-container-low/50 flex justify-between items-center text-xs">
+          <span class="text-on-surface-variant">Saved securely across refreshes</span>
+          <button type="button" onclick="closeWishlistDrawer(); openCartDrawer();" class="font-bold text-primary hover:underline flex items-center gap-1">Go to Bag <span class="material-symbols-outlined text-sm">arrow_forward</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shopping Bag Slide-Over Drawer -->
+  <div id="cartDrawer" class="hidden fixed inset-0 z-50 overflow-hidden bg-black/50 backdrop-blur-sm transition-opacity">
+    <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+      <div class="w-screen max-w-md bg-white shadow-2xl border-l border-surface-container-high flex flex-col justify-between h-full">
+        <!-- Drawer Header -->
+        <div class="p-5 border-b border-surface-container flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">shopping_bag</span>
+            <h3 class="font-bold text-on-surface text-base">SHOPPING BAG (<span id="cartDrawerCount">2</span>)</h3>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" id="clearCartBtn" onclick="clearCart()" class="text-[11px] font-bold text-error hover:underline px-2 py-1">Clear Bag</button>
+            <button type="button" class="p-1 rounded-full hover:bg-surface-container text-on-surface-variant hover:text-on-surface" onclick="closeCartDrawer()" aria-label="Close Shopping Bag">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Cart Items List -->
+        <div class="flex-1 overflow-y-auto p-5 divide-y divide-surface-container space-y-4" id="cartItemsList"></div>
+
+        <!-- Cart Drawer Footer Summary -->
+        <div id="cartFooterSummary" class="p-5 border-t border-surface-container bg-surface-container-low/50">
+          <!-- Coupon Bar -->
+          <div class="mb-3 space-y-2">
+            <div class="flex items-center gap-1.5">
+              <input type="text" id="cartCouponInput" placeholder="Coupon code (MYNTRA500 / FESTIVE10)" class="flex-1 px-2.5 py-1.5 text-xs bg-white rounded-lg border border-surface-container-high focus:border-primary focus:ring-0 outline-none uppercase"/>
+              <button type="button" onclick="applyCouponCode()" class="px-3 py-1.5 bg-[#282c3f] text-white text-xs font-bold rounded-lg hover:opacity-90">Apply</button>
+            </div>
+            <div class="flex items-center gap-2 text-[10px]">
+              <button type="button" onclick="applyCouponCode('MYNTRA500')" class="px-2 py-0.5 rounded bg-amber-100 text-amber-900 font-bold hover:bg-amber-200">Tap to use MYNTRA500</button>
+              <button type="button" onclick="applyCouponCode('FESTIVE10')" class="px-2 py-0.5 rounded bg-rose-100 text-primary font-bold hover:bg-rose-200">FESTIVE10 (10% Off)</button>
+            </div>
+            <div id="cartCouponStatus" class="hidden p-2 bg-amber-100/70 border border-amber-200 rounded-lg flex items-center justify-between text-xs text-amber-900">
+              <div class="flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-amber-700 text-sm">local_offer</span>
+                <span id="cartCouponStatusText">Coupon Applied!</span>
+              </div>
+              <button type="button" onclick="removeCouponCode()" class="text-[11px] font-bold text-error hover:underline">Remove</button>
+            </div>
+          </div>
+
+          <div class="space-y-1.5 text-xs text-on-surface-variant">
+            <div class="flex justify-between">
+              <span>Total MRP</span>
+              <span id="cartTotalMRP">₹4,498</span>
+            </div>
+            <div class="flex justify-between text-success font-medium">
+              <span>Discount on MRP</span>
+              <span id="cartTotalDiscount">-₹2,650</span>
+            </div>
+            <div id="cartCouponDiscountRow" class="hidden flex justify-between text-primary font-bold">
+              <span>Coupon Discount</span>
+              <span id="cartCouponDiscountVal">-₹0</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Convenience & Delivery</span>
+              <span id="cartDeliveryFee" class="text-success font-bold uppercase text-[10px]">FREE</span>
+            </div>
+            <div class="flex justify-between font-extrabold text-on-surface text-sm pt-2 border-t border-surface-container">
+              <span>Total Payable Amount</span>
+              <span id="cartFinalAmount" class="text-primary font-black font-display">₹1,348</span>
+            </div>
+          </div>
+
+          <button type="button" class="mt-4 w-full py-3.5 bg-primary hover:bg-primary-dark text-white text-xs font-bold rounded-lg uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition-transform active:scale-95" onclick="checkoutOrder()">
+            <span>PLACE ORDER</span>
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login / Register Modal -->
+  <div id="loginModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-xl max-w-md w-full p-6 shadow-2xl border border-surface-container-high">
+      <button type="button" class="absolute top-4 right-4 text-outline hover:text-on-surface" onclick="closeLoginModal()" aria-label="Close Login Modal">
+        <span class="material-symbols-outlined text-lg">close</span>
+      </button>
+      <div class="w-12 h-12 bg-rose-50 rounded-xl flex items-center justify-center text-primary font-black mb-3">
+        <span class="text-2xl italic font-display">M</span>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div class="flex border-b border-surface-container-high mb-4">
+        <button type="button" id="tabLoginBtn" onclick="switchAuthTab('login')" class="flex-1 py-2 text-xs font-extrabold border-b-2 border-primary text-primary">LOGIN</button>
+        <button type="button" id="tabRegisterBtn" onclick="switchAuthTab('register')" class="flex-1 py-2 text-xs font-bold border-b-2 border-transparent text-on-surface-variant hover:text-on-surface">REGISTER</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginFormArea">
+        <h3 class="text-lg font-black text-on-surface font-display">Login to Myntra</h3>
+        <p class="text-xs text-on-surface-variant mt-1">Get access to your Orders, Wishlist and Recommendations</p>
+        <div class="mt-4 space-y-3">
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-xs text-on-surface-variant font-bold border-r border-surface-container pr-2 my-2">+91</span>
+            <input type="tel" id="loginPhoneInput" maxlength="10" placeholder="Mobile Number*" class="w-full pl-14 pr-3 py-2.5 text-xs bg-surface-container-low rounded-lg border border-surface-container focus:ring-1 focus:ring-primary outline-none font-medium" value="9876543210"/>
+          </div>
+          <p class="text-[11px] text-outline">
+            By continuing, I agree to the <a class="text-primary underline cursor-pointer" onclick="closeLoginModal(); openInfoModal('terms')">Terms of Use</a> & <a class="text-primary underline cursor-pointer" onclick="closeLoginModal(); openInfoModal('privacy')">Privacy Policy</a>
+          </p>
+          <button type="button" class="w-full py-3 bg-primary hover:bg-primary-dark text-white text-xs font-bold rounded-lg uppercase tracking-wider transition-colors shadow-sm" onclick="performDemoLogin()">
+            CONTINUE
+          </button>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div id="registerFormArea" class="hidden">
+        <h3 class="text-lg font-black text-on-surface font-display">Create Your Account</h3>
+        <p class="text-xs text-on-surface-variant mt-1">Join Myntra Insider & unlock ₹500 off on your first order</p>
+        <div class="mt-4 space-y-2.5">
+          <input type="text" id="regNameInput" placeholder="Full Name*" class="w-full px-3 py-2.5 text-xs bg-surface-container-low rounded-lg border border-surface-container focus:ring-1 focus:ring-primary outline-none font-medium"/>
+          <input type="email" id="regEmailInput" placeholder="Email Address*" class="w-full px-3 py-2.5 text-xs bg-surface-container-low rounded-lg border border-surface-container focus:ring-1 focus:ring-primary outline-none font-medium"/>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center text-xs text-on-surface-variant font-bold border-r border-surface-container pr-2 my-2">+91</span>
+            <input type="tel" id="regPhoneInput" maxlength="10" placeholder="10-Digit Mobile Number*" class="w-full pl-14 pr-3 py-2.5 text-xs bg-surface-container-low rounded-lg border border-surface-container focus:ring-1 focus:ring-primary outline-none font-medium"/>
+          </div>
+          <input type="password" id="regPasswordInput" placeholder="Create Password*" class="w-full px-3 py-2.5 text-xs bg-surface-container-low rounded-lg border border-surface-container focus:ring-1 focus:ring-primary outline-none font-medium"/>
+          <button type="button" class="w-full py-3 bg-primary hover:bg-primary-dark text-white text-xs font-bold rounded-lg uppercase tracking-wider transition-colors shadow-sm" onclick="performRegister()">
+            CREATE ACCOUNT
+          </button>
+        </div>
+      </div>
+
+      <div class="mt-4 pt-4 border-t border-surface-container text-center text-xs text-on-surface-variant">
+        Have trouble logging in? <a class="text-primary font-bold hover:underline cursor-pointer" onclick="closeLoginModal(); openInfoModal('contact')">Get help</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Reusable Info / Account / Orders / Studio Modal -->
+  <div id="genericModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-xl max-w-lg w-full p-6 shadow-2xl border border-surface-container-high">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-surface-container">
+        <h3 id="genericModalTitle" class="text-base font-black text-on-surface font-display uppercase tracking-tight">Information</h3>
+        <button type="button" onclick="closeGenericModal()" class="text-outline hover:text-on-surface" aria-label="Close Modal">
+          <span class="material-symbols-outlined text-lg">close</span>
+        </button>
+      </div>
+      <div id="genericModalBody"></div>
+    </div>
+  </div>
+
+  <!-- Global Action Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#282c3f] text-white px-5 py-3 rounded-lg shadow-2xl text-xs font-medium flex items-center gap-3 opacity-0 pointer-events-none transition-all duration-300 max-w-[90vw]">
+    <span class="material-symbols-outlined text-amber-300 text-lg shrink-0" id="toastIcon">check_circle</span>
+    <span id="toastMessage" class="truncate">Action completed</span>
+  </div>
+
+  <!-- Catalog Data & App Controller -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
